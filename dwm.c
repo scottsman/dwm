@@ -806,11 +806,16 @@ drawbar(Monitor *m)
 				if (!ISVISIBLE(c))
 					continue;
 				xx = x + w;
-				tw = TEXTW(c->name);
+
+				/* Add separators between window names */
+				char name[sizeof(c->name) + sizeof(fancybarsep)];
+				strcpy(name, fancybarsep);
+				strcat(name, c->name);
+				tw = TEXTW(name);
 				w = MIN(m->sel == c ? w : mw, tw);
 
 				drw_setscheme(drw, m->sel == c ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
-				drw_text(drw, x, 0, w, bh, c->name, 0);
+				drw_text(drw, x, 0, w, bh, name, 0);
 				drw_rect(drw, x + 1, 1, dx, dx, c->isfixed, c->isfloating, 0);
 
 				x += w;
