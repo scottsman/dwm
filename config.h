@@ -14,6 +14,7 @@ static const char selbordercolor[]  = "#6095C5";
 static const char selbgcolor[]      = "#232323";
 static const char selfgcolor[]      = "#6095C5";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 20;       /* gap pixel between windows */
 static const unsigned int snap      = 0;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -43,6 +44,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[ ]=",     tilegap },    /* tiled layout with gaps */
 };
 
 /* key definitions */
@@ -81,6 +83,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
