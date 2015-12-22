@@ -14,7 +14,7 @@ static const char selbordercolor[]  = "#6095C5";
 static const char selbgcolor[]      = "#232323";
 static const char selfgcolor[]      = "#6095C5";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 20;       /* gap pixel between windows */
+static const int gappx     = 20;       /* gap pixel between windows */
 static const unsigned int snap      = 0;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -75,6 +75,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_equal,  incgap,         {.i = +10 } },
+	{ MODKEY,                       XK_minus,  incgap,         {.i = -10 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
